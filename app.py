@@ -14,7 +14,7 @@ emotion_dict = {
     4: "Neutral", 5: "Sad", 6: "Surprise"
 }
 
-# 카메라 초기화 (Render에서는 웹캠 접근이 불가하므로 실제 동작은 로컬에서 테스트하세요)
+# 카메라 (Render에서는 실제 웹캠 접근 불가 → 로컬에서만 테스트 가능)
 camera = cv2.VideoCapture(0)
 
 def gen_frames():
@@ -49,6 +49,5 @@ def video_feed():
     return Response(gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-# Render 환경에서 외부 접근을 허용하는 호스트/포트 설정
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=10000)
